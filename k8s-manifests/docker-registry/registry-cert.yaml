@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: registry-cert
+  namespace: default
+spec:
+  secretName: registry-tls
+  duration: 2160h
+  renewBefore: 360h
+  commonName: registry.local
+  dnsNames:
+  - local.mogenius.io
+  - 192.168.66.1  # Ensure to replace or add the right DNS names or IP
+  issuerRef:
+    name: local-ca
+    kind: ClusterIssuer
