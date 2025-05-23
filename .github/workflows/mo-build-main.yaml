@@ -65,3 +65,15 @@ jobs:
           containerName: vmclustdevops
           keyKind: ${{ vars.MO_API_KIND__MAIN }}
           token: ${{ secrets.MO_API_TOKEN__f935763a463a61663d98__MAIN }}
+      - id: releaseWithMogenius-df2bad7eaac29d306ec0
+        name: Release with mogenius
+        uses: mogenius/mogenius-release-action@v1
+        with:
+          dev: false
+          image: ${{ vars.MO_IMAGE_NAME__MAIN }}:${{ env.VERSION }}
+          kind: Deployment
+          namespace: mogenius
+          resourceName: pipboy
+          containerName: pipboy
+          keyKind: ${{ vars.MO_API_KIND__MAIN }}
+          token: ${{ secrets.MO_API_TOKEN__df2bad7eaac29d306ec0__MAIN }}
